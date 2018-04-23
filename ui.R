@@ -1,16 +1,15 @@
 library(shinydashboard)
+library(shiny)
 library(devtools)
 library("htmlwidgets")
 ## Load rpivotTable
 library(rpivotTable)
 
 ui <- dashboardPage(
+
+  dashboardHeader(title = "GC Deals Dashboard",titleWidth = 300),
   
-  
-  
-  dashboardHeader(title = "GC Deals Dashboard"),
-  
-  dashboardSidebar(
+  dashboardSidebar( width = 300,
     sidebarMenu(id="tabs",
                 menuItem("Deals", tabName = "deals", icon=icon("table")),
                 menuItem("RPP", tabName = "rpp", icon=icon("table")),
@@ -21,10 +20,20 @@ ui <- dashboardPage(
     )),
   
   dashboardBody(
-    tags$style(type="text/css",".pvtRows, .pvtCols { background: #8FBC8B none repeat scroll 0 0; }" ),
+    
+    
+  tags$style(type="text/css",".pvtRows, .pvtCols { background: #8FBC8B none repeat scroll 0 0; }" ),
+  
+    tags$head(tags$style(HTML('
+      .main-header .logo {
+        font-family: "Georgia", Times, "Times New Roman", serif;
+        font-weight: bold;
+        font-size: 24px;
+      }
+    '))),
     tabItems(
       
-      ###  tabItem(tabName ="deals",rpivotTableOutput("data") ),
+      ## tabItem(tabName ="deals",rpivotTableOutput("data") ),
       
       
       tabItem(tabName = "deals",
